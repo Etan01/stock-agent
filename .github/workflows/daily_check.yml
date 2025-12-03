@@ -1,0 +1,31 @@
+name: Stock Monitor Agent
+
+on:
+  schedule:
+    # Run every hour at minute 0 (e.g., 10:00, 11:00, 12:00)
+    # Syntax: Minute Hour Day Month Weekday
+    - cron: '0 * * * *' 
+  workflow_dispatch: # Allows you to run it manually to test
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install libraries
+        run: pip install -r requirements.txt
+
+      - name: Run Agent
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_PASS: ${{ secrets.GMAIL_PASS }}
+          TARGET_EMAIL: ${{ secrets.TARGET_EMAIL }}
+        run: python agent.py
