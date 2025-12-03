@@ -14,6 +14,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Debug - List files
+        run: ls -R  # This prints your file structure in the logs
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
