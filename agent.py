@@ -9,7 +9,7 @@ from email.mime.multipart import MIMEMultipart
 
 # --- CONFIGURATION ---
 # The Watchlist: Blue Chips, ETFs (VOO, QQQ), Gold (GLD), Bitcoin (BTC-USD)
-TICKERS = ["AAPL", "MSFT", "NVDA", "AMZN", "GOOGL", "VOO", "QQQ", "GLD", "BTC-USD"]
+TICKERS = ["AAPL", "MSFT", "NVDA", "AMZN", "GOOGL", "META", "NFLX", "VOO", "QQQ", "GLD", "BTC-USD"]
 TARGET_MA = 60
 THRESHOLD = 0.02 # 2% buffer (Cryptos are volatile, so 2% is safer than 1%)
 
@@ -21,7 +21,7 @@ TARGET_EMAIL = os.environ["TARGET_EMAIL"]
 
 # --- SETUP AI ---
 genai.configure(api_key=GEMINI_KEY)
-model = genai.GenerativeModel('gemini-1.5-flash')
+model = genai.GenerativeModel('gemini-1.5-flash-002')
 
 def send_email(subject, body_html):
     try:
