@@ -4,7 +4,7 @@ on:
   schedule:
     # Run every hour at minute 0 (e.g., 10:00, 11:00, 12:00)
     # Syntax: Minute Hour Day Month Weekday
-    - cron: '0 * * * *' 
+    - cron: '0 2 * * *' 
   workflow_dispatch: # Allows you to run it manually to test
 
 jobs:
