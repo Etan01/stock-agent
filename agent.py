@@ -23,7 +23,7 @@ TARGET_EMAIL = os.environ["TARGET_EMAIL"]
 # --- SETUP AI ---
 genai.configure(api_key=GEMINI_KEY)
 # Using the stable version to avoid 404 errors
-model = genai.GenerativeModel('gemini-1.5-flash')
+model = genai.GenerativeModel(model_name="models/gemini-1.5-flash")
 
 def send_email(subject, body_html):
     try:
